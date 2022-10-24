@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menu_graph"
+    app:startDestination="@id/categoryFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.alberto.market.marketapp.ui.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_categoryFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.alberto.market.marketapp.ui.orders.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/action_orderFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_orderFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productFragment"
+        android:name="com.alberto.market.marketapp.ui.product.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <argument
+            android:name="category"
+            app:argType="com.alberto.market.marketapp.domain.Category" />
+        <action
+            android:id="@+id/action_productFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.alberto.market.marketapp.ui.product.detail.DetailProductFragment"
+        android:label="fragment_detail_product"
+        tools:layout="@layout/fragment_detail_product" >
+        <argument
+            android:name="productResponseDto"
+            app:argType="com.alberto.market.marketapp.domain.ProductResponseDto"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCategoryFragment"
+        android:name="com.alberto.market.marketapp.ui.category.register.RegisterCategoryFragment"
+        android:label="fragment_register_category"
+        tools:layout="@layout/fragment_register_category" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.alberto.market.marketapp.ui.maps.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.alberto.market.marketapp.ui.payment.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment" >
+        <argument
+            android:name="productsPaymentDto"
+            app:argType="com.alberto.market.marketapp.domain.ProductsPaymentDto" />
+    </fragment>
+</navigation>

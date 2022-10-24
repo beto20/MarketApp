@@ -1,0 +1,98 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    // Pluggin para Kotlin ext
+    id 'kotlin-android-extensions'
+    // Pluggin para Kapt
+    id 'kotlin-kapt'
+    // Pluggin para Dagger hilt
+    id 'dagger.hilt.android.plugin'
+    // Plugin para la navegacion
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.alberto.market.marketapp"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Dependencias de Navigation Component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
+
+    // Dependencias de Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0' // Libreria retrofit para conectarnos
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0' // Libreria conversor de Json a clases Kotlin
+
+    // Dependecia de Splash
+    implementation 'androidx.core:core-splashscreen:1.0.0-beta02'
+
+    // Dependencia de Dagger Hilt
+    implementation 'com.google.dagger:hilt-android:2.42'
+    kapt 'com.google.dagger:hilt-compiler:2.42'
+
+    // Dependencia de Either
+    implementation ("io.arrow-kt:arrow-core:1.0.0")
+
+    // Dependencia de seguridad Crypto - SharedPreferences
+    implementation 'androidx.security:security-crypto:1.0.0-alpha02'
+
+    // Dependencia de Picasso, es para las imagenes
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Dependencia de loggin-interceptor es para generar log de los servicios
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
+
+    // Dependencias de Room
+    implementation 'androidx.room:room-ktx:2.4.3'
+    implementation 'androidx.room:room-runtime:2.4.3'
+    kapt 'androidx.room:room-compiler:2.4.3'
+
+    // Dependencia de Cropper para recortes de imagenes
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+
+    // Dependencia para Mapas de google
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    // Dependencia para locacion
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
+
+}

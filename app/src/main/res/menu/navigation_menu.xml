@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/categoryFragment"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/menu_categories"/>
+    <item
+        android:id="@+id/orderFragment"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/menu_orders"/>
+    <item
+        android:id="@+id/historial"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/menu_history"/>
+
+    <item
+        android:id="@+id/registerCategoryFragment"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/menu_add_categories"/>
+
+    <item
+        android:id="@+id/mapsFragment"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/menu_maps"/>
+
+</menu>
