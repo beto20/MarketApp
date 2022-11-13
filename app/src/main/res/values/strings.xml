@@ -35,7 +35,7 @@
     <string name="fragment_add_category_camera">Camara</string>
     <string name="fragment_add_category_galery">Galeria</string>
     <string name="fragment_add_category_upload">Cargar</string>
-    <string name="menu_maps">mapas</string>
+    <string name="menu_maps">Mapas</string>
     <string name="message_version">Hay una nueva version desea actualizarla?</string>
     <string name="dialog_version_late">Mas tarde</string>
     <string name="dialog_version_update">Actualizar</string>

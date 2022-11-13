@@ -29,4 +29,7 @@ interface RemoteService {
     suspend fun processPayment(@Header("Authorization") token: String,
                                @Body paymentRequest: PaymentRequest): WrappedResponse<String>
 
+    @GET("/api/compras")
+    suspend fun getRecord(@Header("Authorization") token: String): WrappedListResponse<RecordRemote>
+
 }

@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_baseline_menu_24"
         android:title="@string/menu_orders"/>
     <item
-        android:id="@+id/historial"
+        android:id="@+id/recordFragment"
         android:icon="@drawable/ic_baseline_menu_24"
         android:title="@string/menu_history"/>
 

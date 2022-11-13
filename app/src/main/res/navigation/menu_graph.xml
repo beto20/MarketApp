@@ -67,4 +67,22 @@
             android:name="productsPaymentDto"
             app:argType="com.alberto.market.marketapp.domain.ProductsPaymentDto" />
     </fragment>
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.alberto.market.marketapp.ui.record.RecordFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record" >
+        <action
+            android:id="@+id/action_recordFragment_to_detailRecordFragment"
+            app:destination="@id/detailRecordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailRecordFragment"
+        android:name="com.alberto.market.marketapp.ui.record.detail.DetailRecordFragment"
+        android:label="fragment_detail_record"
+        tools:layout="@layout/fragment_detail_record" >
+        <argument
+            android:name="record"
+            app:argType="com.alberto.market.marketapp.domain.Record" />
+    </fragment>
 </navigation>

@@ -36,10 +36,8 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
 
-        binding.edtEmail.setText("jledesma2509@gmail.com")
+        binding.edtEmail.setText("mock123@newmock.com")
         binding.edtPassword.setText("12345")
-//        binding.edtEmail.setText("prueba@p.com")
-//        binding.edtPassword.setText("prueba123")
 
         init()
         events()
