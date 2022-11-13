@@ -1,5 +1,6 @@
 package com.alberto.market.marketapp.core
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,11 +17,13 @@ abstract class BaseAdapter<T>(var data: List<T>): RecyclerView.Adapter<BaseAdapt
         holder.bind(data[position])
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun update(nData: List<T>) {
         data = nData
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun reset() {
         data = emptyList()
         notifyDataSetChanged()
