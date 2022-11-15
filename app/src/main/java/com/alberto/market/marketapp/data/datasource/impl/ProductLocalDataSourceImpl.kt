@@ -24,6 +24,10 @@ class ProductLocalDataSourceImpl @Inject constructor(
         }
     }
 
+    override suspend fun remove(productId: String): ErrorMessage? = tryCallNoReturnData {
+        productDao.deleteProductById(productId)
+    }
+
     private fun List<DbProduct>.toDomainModel(): List<ProductDto> = map { it.toDomainModel() }
     private fun DbProduct.toDomainModel(): ProductDto = ProductDto(uuid, categoryId, description, code, features, price, quantity, totalAmount, image)
 }

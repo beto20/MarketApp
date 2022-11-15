@@ -33,7 +33,6 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
         init()
         setUpAdapter()
         setUpObserver()
-
     }
 
     private fun init() {
@@ -76,6 +75,7 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
     }
 
     private fun changeView(products: List<ProductDto>) {
+        val productsPaymentDto: ProductsPaymentDto
 
         val productsListDto: MutableList<ProductsDto> = arrayListOf()
         // TODO:: Check this foreach
@@ -88,18 +88,34 @@ class OrderFragment : Fragment(R.layout.fragment_order) {
             productsListDto.add(productsDto)
         }
 
-        val productsPaymentDto = ProductsPaymentDto(productsListDto, products[0].totalAmount)
+        if (products.isNotEmpty()) {
+            productsPaymentDto = ProductsPaymentDto(productsListDto, products[0].totalAmount)
 
-        binding.btnCheckIn.setOnClickListener {
-            orderAdapter.changeViewToPayment(productsPaymentDto)
+            binding.btnCheckIn.setOnClickListener {
+                orderAdapter.changeViewToPayment(productsPaymentDto)
+            }
         }
     }
 
+    private fun deleteProduct(productId: String) {
+        viewModel.removeProduct(productId)
+    }
+
     private fun setUpAdapter() {
-        orderAdapter = OrderAdapter { productDto ->
-            val directions = OrderFragmentDirections.actionOrderFragmentToPaymentFragment(productDto)
-            Navigation.findNavController(binding.root).navigate(directions)
-        }
+        orderAdapter = OrderAdapter(
+            itemClickedDelete = {
+                deleteProduct(it.uuid)
+            },
+            itemClickedEdit = {
+                val directions = OrderFragmentDirections.actionOrderFragmentToDetailProductFragment(it)
+                Navigation.findNavController(binding.root).navigate(directions)
+            },
+            orderProducts = listOf(),
+            passOrderData = {
+                val directions = OrderFragmentDirections.actionOrderFragmentToPaymentFragment(it)
+                Navigation.findNavController(binding.root).navigate(directions)
+            }
+        )
 
         binding.rvOrder.adapter = orderAdapter
     }

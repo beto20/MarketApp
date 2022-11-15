@@ -14,4 +14,7 @@ interface ProductDao {
 
     @Query("SELECT *FROM tb_product")
     fun getAllProducts(): Flow<List<DbProduct>>
+
+    @Query("DELETE FROM tb_product WHERE uuid = :productId")
+    fun deleteProductById(productId: String)
 }

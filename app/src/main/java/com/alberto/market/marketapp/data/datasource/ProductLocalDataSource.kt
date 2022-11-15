@@ -10,4 +10,6 @@ interface ProductLocalDataSource {
     suspend fun save(dbProduct: DbProduct): ErrorMessage?
 
     suspend fun getProductsOrder(): Flow<List<ProductDto>>
+
+    suspend fun remove(productId: String): ErrorMessage?
 }

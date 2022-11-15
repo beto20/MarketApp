@@ -4,16 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alberto.market.marketapp.domain.ProductDto
 import com.alberto.market.marketapp.usecases.GetProductsOrder
+import com.alberto.market.marketapp.usecases.RemoveProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class OrderViewModel @Inject constructor(
-    private val getProductsOrder: GetProductsOrder
+    private val getProductsOrder: GetProductsOrder,
+    private val removeProduct: RemoveProduct
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<OrderState>(OrderState.Init)
@@ -31,6 +35,13 @@ class OrderViewModel @Inject constructor(
         }
     }
 
+    fun removeProduct(productId: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                removeProduct.invoke(productId)
+            }
+        }
+    }
 
     sealed class OrderState {
 

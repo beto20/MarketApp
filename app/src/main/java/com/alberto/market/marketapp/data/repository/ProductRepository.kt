@@ -39,6 +39,10 @@ class ProductRepository @Inject constructor(
         }
     }
 
+    suspend fun removeProduct(productId: String): ErrorMessage? = tryCallNoReturnData {
+        productLocalDataSource.remove(productId)
+    }
+
     private fun ProductRequest.toLocalModel(): DbProduct = DbProduct(uuid, categoryId, description, code, features, price, quantity, totalAmount, image)
 
 }
